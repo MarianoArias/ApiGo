@@ -1,0 +1,50 @@
+basePath: /
+definitions:
+  controller.cgetResponse:
+    properties:
+      customers:
+        items:
+          $ref: '#/definitions/model.Customer'
+        type: array
+      total:
+        type: integer
+    type: object
+  model.Customer:
+    properties:
+      email:
+        type: string
+      firstName:
+        type: string
+      id:
+        type: integer
+      lastName:
+        type: string
+      phoneNumber:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: mariano.arias.1987@gmail.com
+    name: Mariano Arias
+    url: https://github.com/MarianoArias
+  description: Api Platform in GO
+  license: {}
+  title: Api Go
+  version: "1.0"
+paths:
+  /customers/:
+    get:
+      consumes:
+      - application/json
+      description: Get customers from Elasticsearch
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.cgetResponse'
+        "500": {}
+      summary: Get customers
+swagger: "2.0"
